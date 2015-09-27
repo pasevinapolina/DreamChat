@@ -8,3 +8,7 @@ As soon as you logged in you can:
 - **modify** your previous playlists
 - **view** other users' playlists
 - **delete** your old playlists
+
+##Technologies
+**Frontend:** JavaScript, Bootstrap, HTML, CSS, JSP
+**Backend:** Java EE, Maven, Tomcat, Spring, Hibernate, MySQL 
