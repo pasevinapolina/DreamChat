@@ -12,10 +12,10 @@
 ## Plugin-specific files:
 
 # IntelliJ
-/out/
+out/
 
 # Maven
-/target/
+target/
 
 *.properties
 
