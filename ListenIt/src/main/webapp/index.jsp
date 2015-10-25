@@ -28,10 +28,10 @@
                         <a class="navbar-brand" href="#">Listen It</a>
                     </div>
                     <div class="col-md-1">
-                        <p><a href="WEB-INF/pages/login.jsp">Login</a></p>
+                        <a href="#loginModal" role="button" class="btn" data-toggle="modal">Login</a>
                     </div>
                     <div class="col-md-1">
-                        <p><a href="WEB-INF/pages/signup.jsp">Sign up</a></p>
+                        <p><a  role="button" class="btn" href="WEB-INF/pages/signup.jsp">Sign up</a></p>
                     </div>
                 </div>
             </div>
@@ -99,6 +99,26 @@
 <script src="webjars/jquery/2.1.4/jquery.min.js"></script>
 <script src="webjars/bootstrap/3.3.5/js/bootstrap.js"></script>
 
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="loginModalLabel">Login</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" href="#">Login</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="navbar navbar-fixed-bottom" role="navigation">
     <div class="container">

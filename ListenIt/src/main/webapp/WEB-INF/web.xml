@@ -6,5 +6,10 @@
     <!-- Name the application -->
     <display-name>Listen It</display-name>
     <description>Web app for music</description>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext.xml
+        </param-value>
+    </context-param>
 
 </web-app>
