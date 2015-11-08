@@ -11,13 +11,13 @@ import java.util.Set;
  * @version 1.0
  */
 @Entity
-@Table(name = "users")
+@Table(name = "USER")
 public class User implements Serializable {
 
     static final long serialVersionUID = 1L;
     @Id
     @Column(name = "USERNAME", nullable = false)
-    private String login;
+    private String username;
 
     @Column(name = "PASSWORD", nullable = false)
     private String password;
@@ -29,17 +29,17 @@ public class User implements Serializable {
 
     }
 
-    public User(String password, String login) {
+    public User(String password, String username) {
         this.password = password;
-        this.login = login;
+        this.username = username;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
