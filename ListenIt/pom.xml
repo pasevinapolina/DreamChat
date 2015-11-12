@@ -1,20 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>by.bsu.famcs.pasevina.listenIt</groupId>
+  <groupId>by.bsu.fpmi.pasevina.listenit</groupId>
   <artifactId>ListenIt</artifactId>
   <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <name>ListenIt Maven Webapp</name>
   <url>http://maven.apache.org</url>
 
-  <!-- Shared version number properties -->
   <properties>
-    <spring.version>4.2.1.RELEASE</spring.version>
+    <spring.version>4.0.3.RELEASE</spring.version>
     <spring.security.version>3.2.6.RELEASE</spring.security.version>
-    <spring.orm.version>3.2.2.RELEASE</spring.orm.version>
+    <spring.orm.version>4.0.3.RELEASE</spring.orm.version>
     <junit.version>3.8.1</junit.version>
-    <hibernate.version>4.2.2.Final</hibernate.version>
+    <hibernate.version>4.3.6.Final</hibernate.version>
     <bootstrap.version>3.3.5</bootstrap.version>
     <jquery.version>2.1.4</jquery.version>
     <javax.servlet.version>3.0.1</javax.servlet.version>
@@ -27,6 +26,7 @@
   </properties>
 
   <dependencies>
+
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
@@ -88,11 +88,13 @@
       <artifactId>spring-security-web</artifactId>
       <version>${spring.security.version}</version>
     </dependency>
+
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-config</artifactId>
       <version>${spring.security.version}</version>
     </dependency>
+
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-taglibs</artifactId>
@@ -100,17 +102,6 @@
     </dependency>
 
 
-    <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>bootstrap</artifactId>
-      <version>${bootstrap.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>jquery</artifactId>
-      <version>${jquery.version}</version>
-    </dependency>
 
     <!--Hibernate dependencies-->
     <dependency>
@@ -126,32 +117,6 @@
       <version>${hibernate.version}</version>
     </dependency>
 
-
-    <dependency>
-      <groupId>cglib</groupId>
-      <artifactId>cglib</artifactId>
-      <version>2.2</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.jolbox</groupId>
-      <artifactId>bonecp</artifactId>
-      <version>0.8.0.RELEASE</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.mysema.querydsl</groupId>
-      <artifactId>querydsl-jpa</artifactId>
-      <version>${querydsl.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>com.mysema.querydsl</groupId>
-      <artifactId>querydsl-apt</artifactId>
-      <version>${querydsl.version}</version>
-      <scope>provided</scope>
-    </dependency>
-
     <dependency>
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>
@@ -162,6 +127,12 @@
       <groupId>commons-dbcp</groupId>
       <artifactId>commons-dbcp</artifactId>
       <version>${common.dbcp.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+      <version>1.3</version>
     </dependency>
 
     <dependency>
@@ -188,11 +159,33 @@
       <version>1.0.0.GA</version>
     </dependency>
 
+    <!-- Neponyatno -->
+    <dependency>
+      <groupId>xerces</groupId>
+      <artifactId>xmlParserAPIs</artifactId>
+      <version>2.6.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>xerces</groupId>
+      <artifactId>xerces</artifactId>
+      <version>2.4.0</version>
+    </dependency>
+
   </dependencies>
+
+  <profiles>
+    <profile>
+      <id>ListenIt</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+  </profiles>
+
   <build>
     <finalName>ListenIt</finalName>
-    <pluginManagement>
-      <plugins>
+    <plugins>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
@@ -202,7 +195,6 @@
             <target>1.6</target>
           </configuration>
         </plugin>
-      </plugins>
-    </pluginManagement>
+    </plugins>
   </build>
 </project>

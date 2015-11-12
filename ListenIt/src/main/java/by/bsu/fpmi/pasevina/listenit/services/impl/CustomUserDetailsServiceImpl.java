@@ -1,7 +1,8 @@
-package by.bsu.services.impl;
+package by.bsu.fpmi.pasevina.listenit.services.impl;
 
-import by.bsu.models.UserRole;
-import by.bsu.services.UserService;
+
+import by.bsu.fpmi.pasevina.listenit.models.UserRole;
+import by.bsu.fpmi.pasevina.listenit.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,7 +24,7 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        by.bsu.models.User user = userService.getUserById(s);
+        by.bsu.fpmi.pasevina.listenit.models.User user = userService.getUserById(s);
         if(user == null) {
             throw new UsernameNotFoundException("Finding username " + s + " failed");
         }

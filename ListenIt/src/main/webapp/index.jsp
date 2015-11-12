@@ -2,9 +2,10 @@
 <head>
     <title>Listen It</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="webjars/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-    <link href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="static/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -51,7 +52,7 @@
     <div class="carousel-inner">
 
         <div class="item active">
-            <img src="img/bg-sunset.jpg" alt="Sunset" class="img-responsive">
+            <img src="static/img/bg-sunset.jpg" alt="Sunset" class="img-responsive">
             <div class="container">
                 <div class="carousel-caption">
                     <h2>Create your mood.</h2>
@@ -62,7 +63,7 @@
         </div>
 
         <div class="item">
-            <img src="img/bg-crowd.jpg" alt="Crowd" class="img-responsive">
+            <img src="static/img/bg-crowd.jpg" alt="Crowd" class="img-responsive">
             <div class="container">
                 <div class="carousel-caption">
                     <h2>You are unique.</h2>
@@ -73,7 +74,7 @@
         </div>
 
         <div class="item">
-            <img src="img/bg-mountain.jpg" alt="Mountain" class="img-responsive">
+            <img src="static/img/bg-mountain.jpg" alt="Mountain" class="img-responsive">
             <div class="container">
                 <div class="carousel-caption">
                     <h2>We love good music.</h2>
@@ -95,10 +96,6 @@
 
 </div><!-- /.carousel -->
 
-
-<script src="webjars/jquery/2.1.4/jquery.min.js"></script>
-<script src="webjars/bootstrap/3.3.5/js/bootstrap.js"></script>
-
 <!-- Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -114,7 +111,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" href="#">Login</button>
+                <button type="button" class="btn btn-primary">Login</button>
             </div>
         </div>
     </div>
@@ -138,3 +135,4 @@
 
 </body>
 </html>
+
