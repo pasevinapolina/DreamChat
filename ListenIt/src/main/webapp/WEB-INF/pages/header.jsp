@@ -17,7 +17,8 @@
       <div class="navbar-form navbar-right">
         <div class="container">
           <div class="col-md-10">
-            <a class="navbar-brand" href="/welcome">Listen It</a>
+            <a class="navbar-brand" href="/welcome">
+              <span class="glyphicon glyphicon-music"></span>Listen It</a>
           </div>
 
           <c:url var="signup_link" value="/signup"/>
@@ -33,7 +34,8 @@
           </sec:authorize>
           <sec:authorize access="isAuthenticated()">
             <div class="col-md-1">
-              <span class="label label-default">${sessionScope.user}</span>
+              <a role="button" class="navbar-btn btn btn-primary" href="/profile">
+                <span class="glyphicon glyphicon-user"></span>${sessionScope.username}</a>
             </div>
             <div class="col-md-1">
               <a role="button" class="navbar-btn btn btn-primary" href="${logout_link}">Log Out</a>
