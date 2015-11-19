@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * Created by user on 08.11.2015.
+ *
  */
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
@@ -31,7 +31,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         User authUser = (User) SecurityContextHolder.getContext()
                 .getAuthentication().getPrincipal();
         by.bsu.fpmi.pasevina.listenit.models.User user = userService.getUserById(authUser.getUsername());
-        session.setAttribute("user", user);
+        session.setAttribute("username", user.getUsername());
 
         httpServletResponse.setStatus(HttpServletResponse.SC_OK);
         httpServletResponse.sendRedirect("/");

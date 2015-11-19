@@ -7,9 +7,12 @@ import java.io.Serializable;
  *
  */
 @Entity
-@Table(name = "user_role", uniqueConstraints = @UniqueConstraint(columnNames = {"ROLE", "username"}))
+@Table(name = "USER_ROLE", uniqueConstraints = @UniqueConstraint(columnNames = {"ROLE", "USERNAME"}))
 
 public class UserRole implements Serializable{
+
+    static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "USER_ROLE_ID")

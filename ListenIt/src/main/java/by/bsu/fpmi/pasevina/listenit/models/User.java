@@ -11,7 +11,7 @@ import java.util.Set;
  * @version 1.0
  */
 @Entity
-@Table(name = "user")
+@Table(name = "USER")
 public class User implements Serializable {
 
     static final long serialVersionUID = 1L;
@@ -22,8 +22,8 @@ public class User implements Serializable {
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<UserRole> userRoles = new HashSet<UserRole>(0);
+    //@OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+    //private Set<UserRole> userRoles = new HashSet<UserRole>(0);
 
     public User() {
 
@@ -50,11 +50,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public Set<UserRole> getUserRoles() {
-        return userRoles;
-    }
+    //public Set<UserRole> getUserRoles() {
+    //    return userRoles;
+    //}
 
-    public void setUserRoles(Set<UserRole> userRoles) {
-        this.userRoles = userRoles;
-    }
+    //public void setUserRoles(Set<UserRole> userRoles) {
+    //    this.userRoles = userRoles;
+    //}
 }
