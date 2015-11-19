@@ -18,5 +18,5 @@ public interface UserDao {
     void update(User user);
     void addUserRole(User user, String role);
     Collection<User> getUsers();
-    Set<UserRole> gerUserRoles(String username);
+    Set<UserRole> getUserRoles(String username);
 }

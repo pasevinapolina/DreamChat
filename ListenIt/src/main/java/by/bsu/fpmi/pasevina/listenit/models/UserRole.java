@@ -7,7 +7,7 @@ import java.io.Serializable;
  *
  */
 @Entity
-@Table(name = "user_role", uniqueConstraints = @UniqueConstraint(columnNames = {"role", "username"}))
+@Table(name = "user_role", uniqueConstraints = @UniqueConstraint(columnNames = {"ROLE", "username"}))
 
 public class UserRole implements Serializable{
     @Id

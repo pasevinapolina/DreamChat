@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Listen It</title>
@@ -9,37 +10,7 @@
 </head>
 
 <body>
-
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-
-        <div class="navbar-collapse collapse">
-            <div class="navbar-form navbar-right">
-                <div class="container">
-                    <div class="col-md-10">
-                        <a class="navbar-brand" href="#">Listen It</a>
-                    </div>
-                    <div class="col-md-1">
-                        <a href="#loginModal" role="button" class="btn" data-toggle="modal">Login</a>
-                    </div>
-                    <div class="col-md-1">
-                        <p><a  role="button" class="btn" href="WEB-INF/pages/signup.jsp">Sign up</a></p>
-                    </div>
-                </div>
-            </div>
-        </div><!--/.navbar-collapse -->
-
-    </div>
-</div>
+<c:import url="WEB-INF/pages/header.jsp"/>
 
 <div id="homePageCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -57,7 +28,7 @@
                 <div class="carousel-caption">
                     <h2>Create your mood.</h2>
                     <p>Express yourself with mixtapes. Change tracklist, background and mood of them. Create mixtapes tailored to your quirks</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="/signup" role="button">Sign up today</a></p>
                 </div>
             </div>
         </div>
@@ -79,7 +50,7 @@
                 <div class="carousel-caption">
                     <h2>We love good music.</h2>
                     <p>Login and get all the options.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Login</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="/login" role="button">Login</a></p>
                 </div>
             </div>
         </div>
@@ -117,21 +88,7 @@
     </div>
 </div>
 
-<div class="navbar navbar-fixed-bottom" role="navigation">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
-                <p><a href="#">Contuct us</a></p>
-            </div>
-            <div class="col-md-2">
-                <p><a href="#">About</a></p>
-            </div>
-            <div class="col-md-8" align="right">
-                <p>&copy; ListenIt 2015</p>
-            </div>
-        </div>
-    </div>
-</div>
+<c:import url="WEB-INF/pages/footer.jsp"/>
 
 </body>
 </html>

@@ -37,15 +37,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User registerNewAccount(User newUser) throws Exception {
-        if(usernameExists(newUser.getUsername())) {
-            throw new Exception("Username " + newUser.getUsername() + " is already used");
+    public User registerNewAccount(User newUser) {
+        if (usernameExists(newUser.getUsername())) {
+            throw new NullPointerException("There is an account with that username: " + newUser.getUsername());
         }
         User user = new User();
+
         user.setUsername(newUser.getUsername());
-        user.setPassword(newUser.getPassword());
+        user.setPassword(passwordEncoder.encodePassword(newUser.getPassword(), newUser.getUsername()));
+        //user.setFirstName(newUser.getFirstName());
+        //user.setLastName(newUser.getLastName());
+        user = userDao.save(user);
         userDao.addUserRole(user, "USER");
-        return userDao.save(user);
+        return user;
     }
 
     @Override
@@ -55,7 +59,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Set<UserRole> getUserRolesById(String username) {
-        return userDao.gerUserRoles(username);
+        return userDao.getUserRoles(username);
     }
 
     public UserDao getUserDao() {

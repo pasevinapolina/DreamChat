@@ -60,7 +60,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Set<UserRole> gerUserRoles(String username) {
+    public Set<UserRole> getUserRoles(String username) {
         Criteria criteria = getCurrentSession().createCriteria(UserRole.class);
         criteria.add(Restrictions.eq("user.username", username));
         List userRoles = criteria.list();

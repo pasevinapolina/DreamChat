@@ -1,87 +1,65 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Listen It</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="webjars/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet"/>
-  <link href="webjars/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="../../css/style.css" rel="stylesheet"/>
-</head>
+  <head>
+    <title>Signup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/static/css/style.css" rel="stylesheet"/>
+  </head>
 
-<body>
-<script src="webjars/bootstrap/3.3.5/js/bootstrap.js"></script>
-<script src="webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="../../js/home.js"></script>
+  <body>
+    <script src="/static/js/home.js"></script>
 
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="jumbotron">
 
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
+      <c:import url="header.jsp"/>
 
-    <div class="navbar-collapse collapse">
-      <div class="navbar-form navbar-right">
-        <div class="container">
-          <div class="col-md-10">
-            <a class="navbar-brand" href="#">Listen It</a>
-          </div>
-          <div class="col-md-1">
-            <p><a href="#">Login</a></p>
-          </div>
-          <div class="col-md-1">
-            <p><a href="#">Sign up</a></p>
-          </div>
+      <div class="page-header">
+        <h2>Join us</h2>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+
+          <c:url var="signup_url" value="/register"/>
+
+          <form:form modelAttribute="user" action="${signup_url}" method="post">
+            <spring:bind path="username">
+
+              <div class="form-group">
+                <form:label path="username">Username</form:label>
+                <form:input path="username" type="text" class="form-control"
+                            placeholder="Username"/>
+              </div>
+
+              <div class="form-group">
+                <form:label path="password">Password</form:label>
+                <form:input type="password" class="form-control" placeholder="Password"
+                            path="password"/>
+              </div>
+              <button class="btn btn-primary btn-block" type="submit">Sign up</button>
+
+              <div class="form-group" style="margin-top: 24px;">
+                <form:errors path="username" class="form-group">
+                  <div class="alert alert-danger" role="alert">
+                    <b>Sorry! </b>User with such name already exists
+                  </div>
+                </form:errors>
+              </div>
+
+            </spring:bind>
+          </form:form>
+
         </div>
       </div>
-    </div><!--/.navbar-collapse -->
-
-  </div>
-</div>
-
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-
-
-  <div class="container">
-
-    <form class="form-signin" role="form">
-      <h2 class="form-signin-heading">Please sign up</h2>
-      <input type="email" class="form-control" placeholder="Email address" required autofocus>
-      <input type="password" class="form-control" placeholder="Password" required>
-      <input type="password" class="form-control" placeholder="Confirm Password" id="confirm_password" required>
-      <label class="checkbox">
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-    </form>
-
-  </div> <!-- /container -->
-
-</div> <!-- /container -->
-
-<div class="navbar navbar-fixed-bottom" role="navigation">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-2">
-        <p><a href="#">Contuct us</a></p>
-      </div>
-      <div class="col-md-2">
-        <p><a href="#">About</a></p>
-      </div>
-      <div class="col-md-8" align="right">
-        <p>&copy; ListenIt 2015</p>
-      </div>
     </div>
-  </div>
-</div>
-</body>
+
+    <c:import url="footer.jsp"/>
+  </body>
 </html>
 

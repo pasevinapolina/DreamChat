@@ -25,6 +25,8 @@
         <security:logout logout-success-url="/login?logout" delete-cookies="JSESSIONID"/>
 
         <security:intercept-url pattern="/static/**" access="permitAll()"/>
+        <security:intercept-url pattern="/login/**" access="isAnonymous()"/>
+        <security:intercept-url pattern="/signup/**" access="isAnonymous()"/>
 
         <security:session-management>
             <security:concurrency-control max-sessions="100" session-registry-alias="sessionRegistry"/>

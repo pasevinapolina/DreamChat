@@ -12,10 +12,9 @@ import java.util.Set;
  *
  */
 public interface UserService {
-
     void update(User user);
     User getUserById(String username);
-    User registerNewAccount(User newUser) throws Exception;
+    User registerNewAccount(User newUser);
     Collection<User> getUsers(String search);
     Set<UserRole> getUserRolesById(String username);
 }
