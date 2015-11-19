@@ -54,7 +54,7 @@ public class SignupController {
             result.rejectValue("username", "message.regError", "Wrong username or password");
         }
         if(result.hasErrors()) {
-            return  new ModelAndView("../../WEB-INF/views/signup", "user", newUser);
+            return  new ModelAndView("../../WEB-INF/pages/signup", "user", newUser);
         }
         else {
             UsernamePasswordAuthenticationToken token =
@@ -65,9 +65,9 @@ public class SignupController {
             request.getSession()
                     .setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
                             SecurityContextHolder.getContext());
-            request.getSession().setAttribute("user", registered);
+            request.getSession().setAttribute("username", registered.getUsername());
         }
-        return new ModelAndView("../../index");
+        return new ModelAndView("../../WEB-INF/pages/login");
     }
 
     private User createUserAccount(User newUser, BindingResult result) {
