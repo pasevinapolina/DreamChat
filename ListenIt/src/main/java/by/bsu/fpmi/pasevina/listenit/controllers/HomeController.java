@@ -13,7 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
     @RequestMapping(value="/welcome", method = RequestMethod.GET)
-    public ModelAndView dashboard(/*HttpServletRequest, HttpServletResponse*/) {
+    public ModelAndView dashboard() {
         return new ModelAndView("../../index");
+    }
+
+    @RequestMapping(value = "/about")
+    public ModelAndView about() {
+        return new ModelAndView("../../WEB-INF/pages/about");
     }
 }
