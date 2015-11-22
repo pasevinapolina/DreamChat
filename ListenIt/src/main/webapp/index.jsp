@@ -39,7 +39,7 @@
                 <div class="carousel-caption">
                     <h2>You are unique.</h2>
                     <p>Rock? Classical? Or indie? Choose your favourite</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Discover</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="/about" role="button">Discover</a></p>
                 </div>
             </div>
         </div>
