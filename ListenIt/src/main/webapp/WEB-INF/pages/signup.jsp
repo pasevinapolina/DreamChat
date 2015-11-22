@@ -42,6 +42,13 @@
                 <form:input type="password" class="form-control" placeholder="Password"
                             path="password"/>
               </div>
+
+              <div class="form-group">
+                <form:label path="matchingPassword">Confirm password</form:label>
+                <form:input path="matchingPassword" value="" class="form-control"
+                            type="password" placeholder="Confirm Password" />
+              </div>
+
               <button class="btn btn-primary btn-block" type="submit">Sign up</button>
 
               <div class="form-group" style="margin-top: 24px;">

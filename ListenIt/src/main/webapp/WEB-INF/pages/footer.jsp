@@ -7,7 +7,7 @@
         <p><a href="#">Contact us</a></p>
       </div>
       <div class="col-md-2">
-        <p><a href="#">About</a></p>
+        <p><a href="/about">About</a></p>
       </div>
       <div class="col-md-8" align="right">
         <p>&copy; ListenIt 2015</p>

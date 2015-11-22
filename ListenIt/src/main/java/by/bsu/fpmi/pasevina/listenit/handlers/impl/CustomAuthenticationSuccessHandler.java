@@ -1,4 +1,4 @@
-package by.bsu.fpmi.pasevina.listenit.handlers;
+package by.bsu.fpmi.pasevina.listenit.handlers.impl;
 
 
 import by.bsu.fpmi.pasevina.listenit.services.UserService;

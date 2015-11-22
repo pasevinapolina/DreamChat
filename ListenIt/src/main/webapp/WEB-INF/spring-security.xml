@@ -10,9 +10,12 @@
     <bean id="roleVoter" class="org.springframework.security.access.vote.RoleVoter">
         <property name="rolePrefix" value=""/>
     </bean>
-    <bean id="authenticationSuccessHandler" class="by.bsu.fpmi.pasevina.listenit.handlers.CustomAuthenticationSuccessHandler"/>
+    <bean id="authenticationSuccessHandler" class="by.bsu.fpmi.pasevina.listenit.handlers.impl.CustomAuthenticationSuccessHandler"/>
     <bean class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/>
 
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />
+
+    <bean id="passwordValidator" class="by.bsu.fpmi.pasevina.listenit.handlers.impl.PasswordMatchesValidator"/>
 
     <security:http auto-config='true' use-expressions="true">
         <security:form-login
@@ -24,6 +27,7 @@
                 authentication-success-handler-ref="authenticationSuccessHandler" />
 
         <security:logout logout-success-url="/login?logout" delete-cookies="JSESSIONID"/>
+
 
         <security:intercept-url pattern="/static/**" access="permitAll()"/>
         <security:intercept-url pattern="/login/**" access="isAnonymous()"/>

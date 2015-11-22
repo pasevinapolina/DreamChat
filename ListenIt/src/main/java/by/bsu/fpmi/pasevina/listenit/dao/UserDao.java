@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.Set;
 
 /**
- * Created by user on 10.10.2015.
+ *
  */
 public interface UserDao {
 

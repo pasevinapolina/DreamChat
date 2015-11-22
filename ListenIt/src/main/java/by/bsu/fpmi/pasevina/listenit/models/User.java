@@ -1,6 +1,9 @@
 package by.bsu.fpmi.pasevina.listenit.models;
 
+import by.bsu.fpmi.pasevina.listenit.handlers.PasswordMatches;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,6 +13,7 @@ import java.util.Set;
  * @author Polina Pasevina
  * @version 1.0
  */
+@PasswordMatches
 @Entity
 @Table(name = "USER")
 public class User implements Serializable {
@@ -17,10 +21,15 @@ public class User implements Serializable {
     static final long serialVersionUID = 1L;
     @Id
     @Column(name = "USERNAME", nullable = false)
+    @NotNull
     private String username;
 
+    @NotNull
     @Column(name = "PASSWORD", nullable = false)
     private String password;
+
+    @Transient
+    private String matchingPassword;
 
     //@OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
     //private Set<UserRole> userRoles = new HashSet<UserRole>(0);
@@ -48,6 +57,14 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getMatchingPassword() {
+        return matchingPassword;
+    }
+
+    public void setMatchingPassword(String matchingPassword) {
+        this.matchingPassword = matchingPassword;
     }
 
     //public Set<UserRole> getUserRoles() {

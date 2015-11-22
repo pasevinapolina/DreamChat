@@ -19,6 +19,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 /**
  *
@@ -43,7 +47,7 @@ public class SignupController {
     }
 
     @RequestMapping(value = {"/register"}, method = RequestMethod.POST)
-    public ModelAndView registerUser(@ModelAttribute("user") User newUser,
+    public ModelAndView registerUser(@ModelAttribute("user") @Valid User newUser,
                                      BindingResult result, Errors errors, HttpServletRequest request) {
         User registered = new User();
 
@@ -53,6 +57,7 @@ public class SignupController {
         if(registered == null) {
             result.rejectValue("username", "message.regError", "Wrong username or password");
         }
+
         if(result.hasErrors()) {
             return  new ModelAndView("../../WEB-INF/pages/signup", "user", newUser);
         }
