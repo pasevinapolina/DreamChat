@@ -1,5 +1,6 @@
 package by.bsu.fpmi.pasevina.listenit.controllers;
 
+import by.bsu.fpmi.pasevina.listenit.handlers.impl.PasswordMatchesValidator;
 import by.bsu.fpmi.pasevina.listenit.models.User;
 import by.bsu.fpmi.pasevina.listenit.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
+import javax.validation.*;
+import java.util.Set;
 
 /**
  *
@@ -50,6 +49,10 @@ public class SignupController {
     public ModelAndView registerUser(@ModelAttribute("user") @Valid User newUser,
                                      BindingResult result, Errors errors, HttpServletRequest request) {
         User registered = new User();
+
+        if(!passwordMatches(newUser)) {
+            result.rejectValue("password", "message.regError", "Passwords don't matches");
+        }
 
         if(!result.hasErrors()) {
             registered = createUserAccount(newUser, result);
@@ -83,5 +86,15 @@ public class SignupController {
             return null;
         }
         return registered;
+    }
+
+    private boolean passwordMatches(User user) {
+        if(user == null) {
+            return false;
+        }
+        if(user.getPassword() == null || user.getMatchingPassword() == null) {
+            return false;
+        }
+        return user.getPassword().equals(user.getMatchingPassword());
     }
 }
