@@ -31,6 +31,13 @@ public class User implements Serializable {
     @Transient
     private String matchingPassword;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "SOCIAL_PROVIDER", length = 20)
+    private SocialMediaService signInProvider;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Audio> userAudios = new HashSet<Audio>();
+
     //@OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
     //private Set<UserRole> userRoles = new HashSet<UserRole>(0);
 
@@ -65,6 +72,22 @@ public class User implements Serializable {
 
     public void setMatchingPassword(String matchingPassword) {
         this.matchingPassword = matchingPassword;
+    }
+
+    public SocialMediaService getSignInProvider() {
+        return signInProvider;
+    }
+
+    public void setSignInProvider(SocialMediaService signInProvider) {
+        this.signInProvider = signInProvider;
+    }
+
+    public Set<Audio> getUserAudios() {
+        return userAudios;
+    }
+
+    public void setUserAudios(Set<Audio> userAudios) {
+        this.userAudios = userAudios;
     }
 
     //public Set<UserRole> getUserRoles() {
