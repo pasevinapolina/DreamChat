@@ -15,4 +15,11 @@ public class ComplexLikeKey implements Serializable {
 
     @Column(name = "audio_id", nullable = false)
     private long audioId;
+
+    public ComplexLikeKey(){}
+
+    public ComplexLikeKey(String username, long audioId) {
+        this.username = username;
+        this.audioId = audioId;
+    }
 }
