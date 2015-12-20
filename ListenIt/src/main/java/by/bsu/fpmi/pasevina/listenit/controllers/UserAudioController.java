@@ -3,7 +3,6 @@ package by.bsu.fpmi.pasevina.listenit.controllers;
 import by.bsu.fpmi.pasevina.listenit.models.Audio;
 import by.bsu.fpmi.pasevina.listenit.models.User;
 import by.bsu.fpmi.pasevina.listenit.services.AudioService;
-import com.sun.org.apache.xpath.internal.operations.Mult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +31,7 @@ public class UserAudioController {
         List<Audio> userPlaylist = audioService.getUserPlaylist(user.getUsername());
         List<String> allAudios = new ArrayList<String>();
         for (Audio audio : userPlaylist) {
-            allAudios.add("/audio/" + audio.getId());
+            allAudios.add("/audio/" + audio.getAudio_id());
         }
         modelAndView.addObject("user", user);
 
@@ -41,17 +40,15 @@ public class UserAudioController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/myAudiosNew", method = RequestMethod.POST)
+    @RequestMapping(value = "/myAudios", method = RequestMethod.POST)
     public String addNewAudioFile(
             @ModelAttribute("audio") Audio newPlaylist,
-            //@RequestParam(value = "audioFile", required = false) MultipartFile audioFile,
+            @RequestParam(value = "audFile") MultipartFile audioFile,
             HttpServletRequest request) {
 
         User currentUser = (User) request.getSession().getAttribute("user");
-        Audio audio = getNewPlaylist(newPlaylist, currentUser);
-                //audioFile);
+        Audio audio = getNewPlaylist(newPlaylist, currentUser, audioFile);
         audioService.createNewAudio(audio);
-
         return "redirect:/myAudios";
     }
 
@@ -61,9 +58,9 @@ public class UserAudioController {
         return "redirect:/myAudios";
     }
 
-    @RequestMapping(value = "/myAudios/{idPlace}/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/myAudios/{audioId}/update", method = RequestMethod.POST)
     public String updateAudio(@ModelAttribute("audio") Audio newPlaylist,
-                              @RequestParam MultipartFile audioFile,
+                              @RequestParam(value = "audFile") MultipartFile audioFile,
                               @PathVariable String idPlaylist) {
         Audio updatingPlaylist = audioService.getAudioById(Integer.parseInt(idPlaylist));
         try {
@@ -79,13 +76,13 @@ public class UserAudioController {
         return "redirect:/myAudios";
     }
 
-    private Audio getNewPlaylist(Audio newPlaylist, User user) {//, MultipartFile audioFile) {
+    private Audio getNewPlaylist(Audio newPlaylist, User user, MultipartFile audioFile) {
         Audio audio = new Audio();
         audio.setAudioName(newPlaylist.getAudioName());
         audio.setSinger(newPlaylist.getSinger());
         audio.setAudioDescription(newPlaylist.getAudioDescription());
         audio.setUser(user);
-        /*
+
         if (!audioFile.isEmpty()) {
             try {
                 byte[] bytes = audioFile.getBytes();
@@ -93,7 +90,7 @@ public class UserAudioController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }*/
+        }
         return audio;
     }
 }

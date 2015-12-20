@@ -1,6 +1,5 @@
 package by.bsu.fpmi.pasevina.listenit.controllers;
 
-import by.bsu.fpmi.pasevina.listenit.handlers.impl.PasswordMatchesValidator;
 import by.bsu.fpmi.pasevina.listenit.models.Audio;
 import by.bsu.fpmi.pasevina.listenit.models.User;
 import by.bsu.fpmi.pasevina.listenit.services.AudioService;
@@ -25,7 +24,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 /**
  *
@@ -94,8 +92,8 @@ public class SignupController {
 
 
         for (Audio audio : playlist) {
-            audios.add("/audio/" + audio.getId());
-            likedAudio.add(audioService.isLiked(registered, audio.getId()));
+            audios.add("/audio/" + audio.getAudio_id());
+            likedAudio.add(audioService.isLiked(registered, audio.getAudio_id()));
         }
 
         modelAndView.addObject("playlist", playlist);

@@ -50,11 +50,11 @@
                             image-upd" id="updatePlaceBtn"></a>
                                 <span id="plDescr" hidden>${audioObj.audioDescription}</span>
                                 <span id="plSrc" hidden>${audios.get(status.index)}</span>
-                                <span id="plId" hidden>${playlists.get(status.index).id}</span>
+                                <span id="plId" hidden>${playlists.get(status.index).audio_id}</span>
                             </td>
 
                             <td>
-                                <a href="/myAudios/${audioObj.id}/delete"
+                                <a href="/myAudios/${audioObj.audio_id}/delete"
                                    class="glyphicon glyphicon-remove"
                                    onclick="return confirm('Are you sure you want to delete?')"></a>
                             </td>
@@ -84,7 +84,7 @@
                     <h4 class="modal-title">New Track</h4>
                 </div>
 
-                <form action="<c:url value="/myAudiosNew"/>" method="POST" enctype="multipart/form-data" id="addAudioForm">
+                <form action="<c:url value="/myAudios"/>" method="POST" enctype="multipart/form-data" id="addAudioForm">
                     <div class="modal-body">
 
                         <div class="form-group">
@@ -104,8 +104,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="audioFile">Choose file</label>
-                            <input type="file" name="audioFile" id="audioFile" accept="image/jpeg, image/png, image/gif">
+                            <label for="audFile">Choose file</label>
+                            <input type="file" name="audFile" id="audFile" accept="image/jpeg, image/png, image/gif">
 
                             <p class="help-block">Choose audio file</p>
                         </div>
@@ -158,8 +158,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="inputFileUpd">Choose file</label>
-                            <input type="file" name="audioFile" id="inputFileUpd"
+                            <label for="audFileUpd">Choose file</label>
+                            <input type="file" name="audFile" id="audFileUpd"
                                    accept="image/jpeg, image/png, image/gif">
 
                             <p class="help-block">Update audio file</p>

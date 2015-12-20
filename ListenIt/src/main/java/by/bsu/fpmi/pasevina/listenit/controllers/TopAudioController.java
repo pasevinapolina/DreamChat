@@ -33,8 +33,8 @@ public class TopAudioController {
 
 
         for (Audio audio : topPlaylists) {
-            audios.add("/audio/" + audio.getId());
-            likedAudios.add(audioService.isLiked(user, audio.getId()));
+            audios.add("/audio/" + audio.getAudio_id());
+            likedAudios.add(audioService.isLiked(user, audio.getAudio_id()));
         }
 
         modelAndView.addObject("playlists", topPlaylists);

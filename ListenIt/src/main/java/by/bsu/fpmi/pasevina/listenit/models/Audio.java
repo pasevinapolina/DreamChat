@@ -12,7 +12,7 @@ public class Audio implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "AUDIO_ID")
-    private long id;
+    private long audio_id;
 
     @Column(name = "SINGER", nullable = false)
     private String singer;
@@ -31,12 +31,12 @@ public class Audio implements Serializable {
     @JoinColumn(name = "USERNAME", nullable = false)
     private User user;
 
-    public long getId() {
-        return id;
+    public long getAudio_id() {
+        return audio_id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setAudio_id(long id) {
+        this.audio_id = id;
     }
 
     public String getSinger() {
@@ -73,7 +73,7 @@ public class Audio implements Serializable {
 
     public User getUser() {
         return user;
-    } // показывай
+    }
 
     public void setUser(User user) {
         this.user = user;
