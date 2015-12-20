@@ -17,6 +17,7 @@
 <div class="jumbotron">
   <c:import url="header.jsp"/>
 
+
   <div class="my-audio-table">
     <div class="container">
       <div class="panel panel-default">
@@ -62,7 +63,7 @@
       </div>
     </div>
   </div>
-
+</div>
 
 
   <div class="modal-container">
@@ -151,7 +152,7 @@
       </div>
     </div>
   </div>
-</div>
+
   <c:import url="footer.jsp"/>
 
 </body>

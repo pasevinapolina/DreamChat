@@ -38,7 +38,7 @@
           <sec:authorize access="isAuthenticated()">
             <div class="col-md-1">
               <a role="button" class="navbar-btn btn btn-primary" href="${profile_link}">
-                <span class="glyphicon glyphicon-user"></span>${sessionScope.username}</a>
+                <span class="glyphicon glyphicon-user"></span>${sessionScope.user.username}</a>
             </div>
             <div class="col-md-1">
               <a role="button" class="navbar-btn btn btn-primary" href="${logout_link}">Log Out</a>

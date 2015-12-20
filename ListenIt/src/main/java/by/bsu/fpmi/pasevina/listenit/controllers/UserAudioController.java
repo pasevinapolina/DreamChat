@@ -41,7 +41,7 @@ public class UserAudioController {
     }
 
     @RequestMapping(value = "/myAudios", method = RequestMethod.POST)
-    public String addNewAudioFile(@ModelAttribute("audio") Audio newPlaylist,
+    public String addNewAudioFile(@ModelAttribute("audioFile") Audio newPlaylist,
                                   @RequestParam MultipartFile audioFile,
                               HttpServletRequest request) {
 
