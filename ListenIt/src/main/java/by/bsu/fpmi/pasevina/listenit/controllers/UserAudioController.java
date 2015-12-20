@@ -3,6 +3,7 @@ package by.bsu.fpmi.pasevina.listenit.controllers;
 import by.bsu.fpmi.pasevina.listenit.models.Audio;
 import by.bsu.fpmi.pasevina.listenit.models.User;
 import by.bsu.fpmi.pasevina.listenit.services.AudioService;
+import com.sun.org.apache.xpath.internal.operations.Mult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -40,14 +41,15 @@ public class UserAudioController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/myAudios", method = RequestMethod.POST)
-    public String addNewAudioFile(@ModelAttribute("audio") Audio newPlaylist,
-                                  @RequestParam MultipartFile audioFile,
-                              HttpServletRequest request) {
+    @RequestMapping(value = "/myAudiosNew", method = RequestMethod.POST)
+    public String addNewAudioFile( // заливай на гит, я у себя попробую запустить
+            @ModelAttribute("audio") Audio newPlaylist,
+            @RequestParam(value = "audioFile", required = false) MultipartFile audioFile,
+            HttpServletRequest request) {
 
-        User currentUser = (User)request.getSession().getAttribute("user");
-        Audio audio = getNewPlaylist(newPlaylist, currentUser, audioFile);
-        audioService.createNewAudio(audio);
+        User currentUser = (User) request.getSession().getAttribute("user");
+        /*Audio audio = getNewPlaylist(newPlaylist, currentUser, audioFile);
+        audioService.createNewAudio(audio);*/
 
         return "redirect:/myAudios";
     }
