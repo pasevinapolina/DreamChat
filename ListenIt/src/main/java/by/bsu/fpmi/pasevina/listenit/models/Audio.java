@@ -23,9 +23,6 @@ public class Audio implements Serializable {
     @Column(name = "AUDIO_DESCR")
     private String audioDescription;
 
-    @Column(name = "YEAR")
-    private int year;
-
     @Lob
     @Column(name = "AUDIO_FILE", nullable = false)
     private byte[] audioFile;
@@ -64,14 +61,6 @@ public class Audio implements Serializable {
 
     public void setAudioDescription(String audioDescription) {
         this.audioDescription = audioDescription;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
     }
 
     public byte[] getAudioFile() {

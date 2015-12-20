@@ -26,7 +26,7 @@
         <table class="table table-striped">
           <thead>
           <tr>
-            <th>Name</th><th>Audio</th><th>Description</th><th>Year</th><th>Edit</th><th>Delete</th>
+            <th>Name</th><th>Singer</th><th>Audio</th><th>Description</th><th>Edit</th><th>Delete</th>
           </tr>
           </thead>
 
@@ -34,12 +34,12 @@
           <c:forEach var="audioObj" items="${playlists}" varStatus="status">
             <tr>
               <td>${audioObj.audioName}</td>
+              <td>${audioObj.singer}</td>
               <td><div class="td-image"><img src="${audios.get(status.index)}"></div></td>
               <td><textarea class="form-control" rows="5" readonly>${audioObj.audioDescription}</textarea></td>
 
               <td><a data-toggle="modal" data-target="#updateModel" class="glyphicon glyphicon-edit
                             image-upd" id="updatePlaceBtn"></a>
-                <span id="plName" hidden>${audioObj.audioName}</span>
                 <span id="plDescr" hidden>${audioObj.audioDescription}</span>
                 <span id="plSrc" hidden>${audios.get(status.index)}</span>
                 <span id="plId" hidden>${playlists.get(status.index).id}</span>
@@ -80,13 +80,18 @@
             <div class="modal-body">
 
               <div class="form-group">
-                <label for="name">Audio name</label>
-                <input class="form-control" id="name" name="name" placeholder="Track name">
+                <label for="audioName">Audio name</label>
+                <input class="form-control" id="audioName" name="audioName" placeholder="Track name">
+              </div>
+
+              <div class="form-group">
+                <label for="singer">Singer</label>
+                <input class="form-control" id="singer" name="singer" placeholder="Singer">
               </div>
 
               <div class="form-group">
                 <label for="descr">Description</label>
-                            <textarea id="descr" class="form-control" rows="5" name="description"
+                            <textarea id="descr" class="form-control" rows="5" name="audioDescription"
                                       placeholder="Less than 600 characters" maxlength="600"></textarea>
               </div>
 
@@ -123,13 +128,19 @@
 
             <div class="modal-body">
               <div class="form-group">
-                <label for="name">Track Name</label>
-                <input class="form-control" id="nameUpd" name="name" placeholder="Track name">
+                <label for="nameUpd">Audio Name</label>
+                <input class="form-control" id="nameUpd" name="audioName" placeholder="Track name">
               </div>
+
+              <div class="form-group">
+                <label for="singerUpd">Singer</label>
+                <input class="form-control" id="singerUpd" name="singer" placeholder="Singer">
+              </div>
+
               <div class="form-group">
                 <label for="descr">Description</label>
                             <textarea id="descrUpd" class="form-control" rows="5"
-                                      name="description" placeholder="Less than 600 characters"></textarea>
+                                      name="audioDescription" placeholder="Less than 600 characters"></textarea>
               </div>
 
               <div class="form-group">
@@ -137,7 +148,7 @@
               </div>
 
               <div class="form-group">
-                <label for="inputFile">Choose file</label>
+                <label for="inputFileUpd">Choose file</label>
                 <input type="file" name="audioFile" id="inputFileUpd" accept="image/jpeg, image/png, image/gif">
                 <p class="help-block">Update audio file</p>
               </div>
