@@ -5,9 +5,14 @@
 <head>
     <title>My Audio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="webjars/jquery-validation/1.14.0/jquery.validate.min.js"></script>
+    <script src="webjars/jquery-validation/1.14.0/jquery.validate.js"></script>
+    <script src="webjars/jquery-validation/1.14.0/additional-methods.min.js"></script>
+    <script src="webjars/jquery-validation/1.14.0/additional-methods.js"></script>
     <script type="text/javascript" src="../../static/js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="../../static/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../static/js/add_audio.js"></script>
+    <script type="text/javascript" src="../../static/js/add_audio.js" defer></script>
+    <script type="text/javascript" src="../../static/js/update_audio.js" defer></script>
     <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../static/css/style.css" rel="stylesheet">
 </head>
@@ -16,14 +21,19 @@
 
 <div class="jumbotron">
     <c:import url="header.jsp"/>
-
-
+</div>
+<div class="container">
+    <button type="button" class="btn btn-primary" data-toggle="modal"
+            data-target="#myModal" id="newPlaceBtn">
+        Add new Track
+    </button>
+</div>
     <div class="my-audio-table">
         <div class="container">
             <div class="panel panel-default">
                 <!-- Default panel contents -->
                 <div class="panel-heading">Your Playlist</div>
-                <table class="table table-striped">
+                <table class="table table-hover">
                     <thead>
                     <tr>
                         <th>Name</th>
@@ -41,16 +51,22 @@
                             <td>${audioObj.audioName}</td>
                             <td>${audioObj.singer}</td>
                             <td>
-                                <div class="td-image"><img src="${audios.get(status.index)}"></div>
+                                    <audio controls  class="td-audio">
+                                        <source src="${audios.get(status.index)}">
+                                        Sorry! Your browser doesn't support music
+                                    </audio>
+
                             </td>
                             <td><textarea class="form-control" rows="5" readonly>${audioObj.audioDescription}</textarea>
                             </td>
 
                             <td><a data-toggle="modal" data-target="#updateModel" class="glyphicon glyphicon-edit
-                            image-upd" id="updatePlaceBtn"></a>
+                            aud-upd" id="updateAudioBtn"></a>
+                                <span id="plName" hidden>${audioObj.audioName}</span>
                                 <span id="plDescr" hidden>${audioObj.audioDescription}</span>
                                 <span id="plSrc" hidden>${audios.get(status.index)}</span>
                                 <span id="plId" hidden>${playlists.get(status.index).audio_id}</span>
+                                <span id="plSinger" hidden>${audioObj.singer}</span>
                             </td>
 
                             <td>
@@ -63,15 +79,10 @@
                     </tbody>
                 </table>
             </div>
-            <div class="container">
-                <button type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#myModal" id="newPlaceBtn">
-                    Add new Track
-                </button>
-            </div>
+
         </div>
     </div>
-</div>
+
 
 
 <div class="modal-container">
@@ -105,7 +116,7 @@
 
                         <div class="form-group">
                             <label for="audFile">Choose file</label>
-                            <input type="file" name="audFile" id="audFile" accept="image/jpeg, image/png, image/gif">
+                            <input type="file" name="audFile" id="audFile" accept="audio/ogg audio/mpeg audio/wav">
 
                             <p class="help-block">Choose audio file</p>
                         </div>
@@ -134,7 +145,7 @@
                 </div>
 
                 <form action="<c:url value="/myAudios"/>" method="POST" enctype="multipart/form-data"
-                      id="updatePlaceForm">
+                      id="updateAudForm">
 
                     <div class="modal-body">
                         <div class="form-group">
@@ -148,19 +159,22 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="descr">Description</label>
+                            <label for="descrUpd">Description</label>
                             <textarea id="descrUpd" class="form-control" rows="5"
                                       name="audioDescription" placeholder="Less than 600 characters"></textarea>
                         </div>
 
                         <div class="form-group">
-                            <div class="td-image"><img src="" id="imageSrcDesr"></div>
+                            <div class="td-audio">
+                                <audio controls src="" id="audFileSrc">
+                                </audio>
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="audFileUpd">Choose file</label>
-                            <input type="file" name="audFile" id="audFileUpd"
-                                   accept="image/jpeg, image/png, image/gif">
+                            <label for="audFileUpdate">Choose file</label>
+                            <input type="file" name="audFileUpdate" id="audFileUpdate"
+                                   accept="audio/ogg audio/mpeg audio/wav">
 
                             <p class="help-block">Update audio file</p>
                         </div>

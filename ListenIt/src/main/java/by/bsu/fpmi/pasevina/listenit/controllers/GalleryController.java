@@ -34,7 +34,7 @@ public class GalleryController {
 
         for (Audio audio : playlist) {
             audios.add("/audio/" + audio.getAudio_id());
-            likedAudios.add(audioService.isLiked(user, audio.getAudio_id()));
+            //likedAudios.add(audioService.isLiked(user, audio.getAudio_id()));
         }
 
         modelAndView.addObject("playlists", playlist);

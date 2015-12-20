@@ -76,7 +76,9 @@ public class AudioDaoImpl implements AudioDao {
         Like like = (Like) getCurrentSession()
                 .createCriteria(Like.class)
                 .add(Restrictions.eq(
-                        "audio_like", new ComplexLikeKey(user.getUsername(), audioId)))
+                        "audio_id", audioId))
+                .add(Restrictions.eq("username", user.getUsername()))
+                   //     "audio_like", new ComplexLikeKey(user.getUsername(), audioId)))
                 .uniqueResult();
         getCurrentSession().delete(like);
         getCurrentSession().flush();
@@ -85,8 +87,8 @@ public class AudioDaoImpl implements AudioDao {
     @Override
     public boolean isLiked(User user, long audioId) {
         Criteria criteria = getCurrentSession().createCriteria(Like.class);
-        criteria.add(Restrictions.eq("audio_like.username", user.getUsername()))
-                .add(Restrictions.eq("audio_like.audio_id", audioId));
+        criteria.add(Restrictions.eq("username", user.getUsername()))
+                .add(Restrictions.eq("audio_id", audioId));
         return criteria.list().size() != 0;
     }
 

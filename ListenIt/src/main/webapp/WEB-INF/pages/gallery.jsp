@@ -17,25 +17,25 @@
 <div class="jumbotron">
 
   <c:import url="header.jsp"/>
+</div>
 
-    <div class="gallery">
+    <div class="jumbotron">
+
       <div class="flex-container">
-        <c:forEach var="playlists" items="${playlists}" varStatus="status">
-
-          <div class="flex1">
-            <div class="thumbnail">
-              <div class="player">
+        <table class="table-hover">
+          <c:forEach var="playlists" items="${playlists}" varStatus="status">
+            <tr class="row">
+              <td class="col-md-3 col-md-push-3">
                 <audio controls class="audio">
-                  <source src="${audios.get(status.index)}" type="audio/ogg">
-                  <source src="${audios.get(status.index)}" type="audio/mpeg">
-                  <source src="${audios.get(status.index)}" type="audio/wav">
+                  <source src="${audios.get(status.index)}">
                   Please <a href="../../static/img/jazz.mp3" download>download</a> the audio file.
                 </audio>
-              <span class="image-name" hidden>${playlists.audioName}</span>
-              <span class="image-description" hidden>${playlists.audioDescription}</span>
-            </div>
-          </div>
-        </c:forEach>
+              </td>
+              <td class="col-md-6"><p class="track-name">${playlists.audioName}</p></td>
+              <td class="col-md-9"><p class="track-description" hidden>${playlists.singer}</p></td>
+            </tr>
+          </c:forEach>
+        </table>
       </div>
     </div>
 
@@ -49,22 +49,28 @@
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <span class="modal-title"></span>
             </div>
+
             <div class="modal-body">
-              <img class="modal-image" src="">
+              <audio controls>
+                <source src="" id="audSrc">
+              </audio>
+
               <div class="like">
                 <span class="glyphicon like-span" id="id-like"></span>
                 <span class="audioId" hidden></span>
               </div>
             </div>
+
             <div class="modal-footer">
               <span class="modal-description"></span>
             </div>
-          </div>
 
+          </div>
         </div>
       </div>
-  </div>
-    <c:import url="footer.jsp"/>
+    </div>
+
+  <c:import url="footer.jsp"/>
 
 </body>
 </html>

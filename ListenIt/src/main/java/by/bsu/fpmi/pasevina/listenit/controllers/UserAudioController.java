@@ -60,7 +60,7 @@ public class UserAudioController {
 
     @RequestMapping(value = "/myAudios/{audioId}/update", method = RequestMethod.POST)
     public String updateAudio(@ModelAttribute("audio") Audio newPlaylist,
-                              @RequestParam(value = "audFile") MultipartFile audioFile,
+                              @RequestParam(value = "audFileUpdate", required = false) MultipartFile audioFile,
                               @PathVariable String idPlaylist) {
         Audio updatingPlaylist = audioService.getAudioById(Integer.parseInt(idPlaylist));
         try {
@@ -70,6 +70,7 @@ public class UserAudioController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         updatingPlaylist.setAudioDescription(newPlaylist.getAudioDescription());
         updatingPlaylist.setAudioName(newPlaylist.getAudioName());
         audioService.updateAudio(updatingPlaylist);

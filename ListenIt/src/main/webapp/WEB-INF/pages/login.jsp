@@ -44,7 +44,7 @@
                 <c:if test="${not empty error}">
                     <div class="form-group" style="margin-top: 24px;">
                         <div class="alert alert-danger" role="alert">
-                            <b>Oops! </b>Wrong user name or password
+                            <b>Sorry! </b>Wrong username or password
                         </div>
                     </div>
                 </c:if>

@@ -31,11 +31,10 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         User authUser = (User) SecurityContextHolder.getContext()
                 .getAuthentication().getPrincipal();
         by.bsu.fpmi.pasevina.listenit.models.User user = userService.getUserById(authUser.getUsername());
-        //session.setAttribute("username", user.getUsername());
         session.setAttribute("user", user);
 
         httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-        httpServletResponse.sendRedirect("/");
+        httpServletResponse.sendRedirect("/gallery");
 
     }
 }

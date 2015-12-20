@@ -31,13 +31,15 @@
         <div class="flex">
 
           <div class="thumbnail">
-            <div class="flex-image">
-              <img src="${audios.get(status.index)}" class="image-link">
+            <div class="flex-track">
+              <audio controls>
+                <source src="${audios.get(status.index)}" class="aud-src">
+              </audio>
             </div>
           </div>
 
 
-          <div class="image-description">
+          <div class="track-description">
             <div class="panel panel-info">
               <div class="panel-heading">${topPlaylists.audioName}</div>
               <div class="panel-body">
@@ -62,7 +64,9 @@
             <span class="modal-title" id="playlistName"></span>
           </div>
           <div class="modal-body">
-            <img class="modal-image" src="">
+            <audio controls>
+              <source class="modal-audio" src="">
+            </audio>
             <div class="like">
               <span class="glyphicon like-span" id="id-like"></span>
               <span class="audioId" hidden></span>

@@ -9,21 +9,25 @@ $('#addAudioForm').validate({
     errorClass: "my-error-class",
     validClass: "my-valid-class",
     rules: {
-        name: {
+        audioName: {
             required: true,
             minlength: 5,
             maxlength: 30
         },
-        description: {
+        audioDescription: {
             minlength: 10,
             required: true
         },
-        photo: {
+        singer: {
+            minlength: 1,
+            required: true
+        },
+        audFile: {
             required: true,
-            extension: 'png|jpe?g|gif',
-            filesize: 100 * 1024 * 1024
+            extension: 'mp3|ogg|wav|mpeg',
+            filesize: 50 * 1024 * 1024
         }
     }
 });
 
-$.validator.messages.filesize = 'File must less 100Mb';
+$.validator.messages.filesize = 'File must less 50Mb';

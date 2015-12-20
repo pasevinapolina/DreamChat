@@ -78,11 +78,8 @@ public class SignupController {
             request.getSession()
                     .setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
                             SecurityContextHolder.getContext());
-            //request.getSession().setAttribute("username", registered.getUsername());
             request.getSession().setAttribute("user", registered);
         }
-
-//        ModelAndView modelAndView = new ModelAndView("../../index");
 
         ModelAndView modelAndView = new ModelAndView("../../WEB-INF/pages/gallery");
 
@@ -93,7 +90,7 @@ public class SignupController {
 
         for (Audio audio : playlist) {
             audios.add("/audio/" + audio.getAudio_id());
-            likedAudio.add(audioService.isLiked(registered, audio.getAudio_id()));
+            //likedAudio.add(audioService.isLiked(registered, audio.getAudio_id()));
         }
 
         modelAndView.addObject("playlist", playlist);

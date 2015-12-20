@@ -8,7 +8,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "audio_like", uniqueConstraints = @UniqueConstraint(
-        columnNames = {"audio_id", "username"}))
+        columnNames = {"username","audio_id"}))
 public class Like implements Serializable {
 
         private static final long serialVersionUID = 1L;
