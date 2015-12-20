@@ -42,14 +42,15 @@ public class UserAudioController {
     }
 
     @RequestMapping(value = "/myAudiosNew", method = RequestMethod.POST)
-    public String addNewAudioFile( // заливай на гит, я у себя попробую запустить
+    public String addNewAudioFile(
             @ModelAttribute("audio") Audio newPlaylist,
-            @RequestParam(value = "audioFile", required = false) MultipartFile audioFile,
+            //@RequestParam(value = "audioFile", required = false) MultipartFile audioFile,
             HttpServletRequest request) {
 
         User currentUser = (User) request.getSession().getAttribute("user");
-        /*Audio audio = getNewPlaylist(newPlaylist, currentUser, audioFile);
-        audioService.createNewAudio(audio);*/
+        Audio audio = getNewPlaylist(newPlaylist, currentUser);
+                //audioFile);
+        audioService.createNewAudio(audio);
 
         return "redirect:/myAudios";
     }
@@ -78,11 +79,13 @@ public class UserAudioController {
         return "redirect:/myAudios";
     }
 
-    private Audio getNewPlaylist(Audio newPlaylist, User user, MultipartFile audioFile) {
+    private Audio getNewPlaylist(Audio newPlaylist, User user) {//, MultipartFile audioFile) {
         Audio audio = new Audio();
         audio.setAudioName(newPlaylist.getAudioName());
+        audio.setSinger(newPlaylist.getSinger());
         audio.setAudioDescription(newPlaylist.getAudioDescription());
         audio.setUser(user);
+        /*
         if (!audioFile.isEmpty()) {
             try {
                 byte[] bytes = audioFile.getBytes();
@@ -90,7 +93,7 @@ public class UserAudioController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
         return audio;
     }
 }

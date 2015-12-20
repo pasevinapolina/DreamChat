@@ -44,3 +44,4 @@ ALTER TABLE audio_like ADD FOREIGN KEY (audio_id) REFERENCES audio (audio_id) ON
 ALTER TABLE audio_like ADD FOREIGN KEY (username) REFERENCES user (USERNAME) ON DELETE CASCADE ON UPDATE CASCADE;
 CREATE INDEX fk_audio_like_idx ON audio_like (audio_id);
 CREATE INDEX fk_user_like_idx ON audio_like (username);
+короче, я ребутаюсь

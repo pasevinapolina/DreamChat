@@ -24,7 +24,7 @@ public class Audio implements Serializable {
     private String audioDescription;
 
     @Lob
-    @Column(name = "AUDIO_FILE", nullable = false)
+    @Column(name = "AUDIO_FILE")
     private byte[] audioFile;
 
     @ManyToOne(fetch = FetchType.LAZY)
