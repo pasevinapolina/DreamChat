@@ -73,7 +73,7 @@ public class Audio implements Serializable {
 
     public User getUser() {
         return user;
-    }
+    } // показывай
 
     public void setUser(User user) {
         this.user = user;
