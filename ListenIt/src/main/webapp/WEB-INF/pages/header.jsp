@@ -23,7 +23,9 @@
 
           <c:url var="signup_link" value="/signup"/>
           <c:url var="login_link" value="/login"/>
+          <c:url var="profile_link" value="/myAudios"/>
           <c:url var="logout_link" value="/j_spring_security_logout"/>
+
           <sec:authorize access="isAnonymous()">
             <div class="col-md-1">
               <a role="button" class="navbar-btn btn btn-primary" href="${signup_link}">Sign Up</a>
@@ -32,9 +34,10 @@
               <a role="button" class="navbar-btn btn btn-primary login-button" href="${login_link}">Log In</a>
             </div>
           </sec:authorize>
+
           <sec:authorize access="isAuthenticated()">
             <div class="col-md-1">
-              <a role="button" class="navbar-btn btn btn-primary" href="/profile">
+              <a role="button" class="navbar-btn btn btn-primary" href="${profile_link}">
                 <span class="glyphicon glyphicon-user"></span>${sessionScope.username}</a>
             </div>
             <div class="col-md-1">

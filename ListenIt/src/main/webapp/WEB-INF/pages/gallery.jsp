@@ -6,10 +6,10 @@
 <head>
   <title>Gallery</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="static/css/bootstrap.min.css" rel="stylesheet">
-  <link href="static/css/style.css" rel="stylesheet">
-  <script src="webjars/jquery/2.1.4/jquery.min.js"></script>
-  <script src="webjars/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../static/js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="../../static/js/bootstrap.min.js"></script>
+  <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../static/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -20,13 +20,19 @@
 
     <div class="gallery">
       <div class="flex-container">
-        <c:forEach var="playlist" items="${playlist}" varStatus="status">
+        <c:forEach var="playlists" items="${playlists}" varStatus="status">
 
           <div class="flex1">
             <div class="thumbnail">
-              <img src="${audios.get(status.index)}" class="image-link">
-              <span class="image-name" hidden>${playlist.name}</span>
-              <span class="image-description" hidden>${playlist.description}</span>
+              <div class="player">
+                <audio controls class="audio">
+                  <source src="${audios.get(status.index)}" type="audio/ogg">
+                  <source src="${audios.get(status.index)}" type="audio/mpeg">
+                  <source src="${audios.get(status.index)}" type="audio/wav">
+                  Please <a href="../../static/img/jazz.mp3" download>download</a> the audio file.
+                </audio>
+              <span class="image-name" hidden>${playlists.audioName}</span>
+              <span class="image-description" hidden>${playlists.audioDescription}</span>
             </div>
           </div>
         </c:forEach>
@@ -57,11 +63,8 @@
 
         </div>
       </div>
-
-
-
-      <c:import url="footer.jsp"/>
-</div>
+  </div>
+    <c:import url="footer.jsp"/>
 
 </body>
 </html>

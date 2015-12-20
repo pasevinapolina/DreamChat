@@ -17,27 +17,27 @@ import java.util.List;
  *
  */
 @Controller
-public class GalleryController {
+public class TopAudioController {
 
     @Autowired
     private AudioService audioService;
 
-    @RequestMapping(value = "/gallery", method = RequestMethod.GET)
-    public ModelAndView getGallery(HttpServletRequest request) {
+    @RequestMapping(value = "/top", method = RequestMethod.GET)
+    public ModelAndView getTop(HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
 
-        ModelAndView modelAndView = new ModelAndView("../../WEB-INF/pages/gallery");
-        List<Audio> playlist = audioService.getPlaylist();
+        ModelAndView modelAndView = new ModelAndView("../../WEB-INF/pages/top");
+        List<Audio> topPlaylists = audioService.getTopAudio();
         List<String> audios = new ArrayList<String>();
         List<Boolean> likedAudios = new ArrayList<Boolean>();
 
 
-        for (Audio audio : playlist) {
+        for (Audio audio : topPlaylists) {
             audios.add("/audio/" + audio.getId());
             likedAudios.add(audioService.isLiked(user, audio.getId()));
         }
 
-        modelAndView.addObject("playlists", playlist);
+        modelAndView.addObject("playlists", topPlaylists);
         modelAndView.addObject("audios", audios);
         modelAndView.addObject("likes", likedAudios);
 

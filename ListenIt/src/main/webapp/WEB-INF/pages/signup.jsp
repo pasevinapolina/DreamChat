@@ -8,12 +8,14 @@
   <head>
     <title>Signup</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="/static/css/style.css" rel="stylesheet"/>
+    <script type="text/javascript" src="../../static/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../../static/js/bootstrap.min.js"></script>
+    <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../static/css/style.css" rel="stylesheet">
   </head>
 
   <body>
-    <script src="/static/js/home.js"></script>
+    <script src="../../static/js/home.js"></script>
 
     <div class="jumbotron">
 
@@ -26,7 +28,7 @@
       <div class="row">
         <div class="col-md-4 col-md-offset-4">
 
-          <c:url var="signup_url" value="/register"/>
+          <c:url var="signup_url" value="/signup"/>
 
           <form:form modelAttribute="user" action="${signup_url}" method="post">
             <spring:bind path="username">
@@ -55,6 +57,14 @@
                 <form:errors path="username" class="form-group">
                   <div class="alert alert-danger" role="alert">
                     <b>Sorry! </b>User with such name already exists
+                  </div>
+                </form:errors>
+              </div>
+
+              <div class="form-group" style="margin-top: 24px;">
+                <form:errors path="password" class="form-group">
+                  <div class="alert alert-danger" role="alert">
+                    <b>Sorry! </b>Passwords don't match
                   </div>
                 </form:errors>
               </div>

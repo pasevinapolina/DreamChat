@@ -1,7 +1,9 @@
 package by.bsu.fpmi.pasevina.listenit.controllers;
 
 import by.bsu.fpmi.pasevina.listenit.handlers.impl.PasswordMatchesValidator;
+import by.bsu.fpmi.pasevina.listenit.models.Audio;
 import by.bsu.fpmi.pasevina.listenit.models.User;
+import by.bsu.fpmi.pasevina.listenit.services.AudioService;
 import by.bsu.fpmi.pasevina.listenit.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,6 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -34,9 +38,11 @@ public class SignupController {
     @Qualifier("authenticationManager")
     private AuthenticationManager authManager;
 
-
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private AudioService audioService;
 
     @RequestMapping(value = {"/signup"}, method = RequestMethod.GET)
     public ModelAndView getSignup() {
@@ -45,7 +51,7 @@ public class SignupController {
         return modelAndView;
     }
 
-    @RequestMapping(value = {"/register"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/signup"}, method = RequestMethod.POST)
     public ModelAndView registerUser(@ModelAttribute("user") @Valid User newUser,
                                      BindingResult result, Errors errors, HttpServletRequest request) {
         User registered = new User();
@@ -73,9 +79,29 @@ public class SignupController {
             request.getSession()
                     .setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
                             SecurityContextHolder.getContext());
-            request.getSession().setAttribute("username", registered.getUsername());
+            //request.getSession().setAttribute("username", registered.getUsername());
+            request.getSession().setAttribute("user", registered);
         }
-        return new ModelAndView("../../WEB-INF/pages/login");
+
+//        ModelAndView modelAndView = new ModelAndView("../../index");
+
+        ModelAndView modelAndView = new ModelAndView("../../WEB-INF/pages/gallery");
+
+        List<Audio> playlist = audioService.getPlaylist();
+        List<String> audios = new ArrayList<String>();
+        List<Boolean> likedAudio = new ArrayList<Boolean>();
+
+
+        for (Audio audio : playlist) {
+            audios.add("/audio/" + audio.getId());
+            likedAudio.add(audioService.isLiked(registered, audio.getId()));
+        }
+
+        modelAndView.addObject("playlist", playlist);
+        modelAndView.addObject("audios", audios);
+        modelAndView.addObject("likes", likedAudio);
+
+        return modelAndView;
     }
 
     private User createUserAccount(User newUser, BindingResult result) {
@@ -97,4 +123,5 @@ public class SignupController {
         }
         return user.getPassword().equals(user.getMatchingPassword());
     }
+
 }
